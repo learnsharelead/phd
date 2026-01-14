@@ -63,7 +63,7 @@ def show_top_nav(current_page="Home"):
     with col2:
         paper = option_menu(
             menu_title=None,
-            options=["🏠 Home", "📝 Paper I", "📐 Paper II", "📚 Paper III", "🛠️ Resources"],
+            options=["Home", "Paper I", "Paper II", "Paper III", "Resources"],
             icons=["house", "journal-text", "calculator", "book", "tools"],
             default_index=0 if current_paper == "Home" else 
                          1 if current_paper == "Paper I" else 
@@ -100,24 +100,24 @@ def show_top_nav(current_page="Home"):
         )
     
     # Handle paper selection
-    if paper == "🏠 Home" and current_page != "Home":
+    if paper == "Home" and current_page != "Home":
         st.switch_page("Home.py")
         return
     
     # Module navigation based on selected paper
-    if paper == "📝 Paper I":
+    if paper == "Paper I":
         options = paper1_pages
         icons = ["search", "clipboard", "rulers", "file-text"]
         default_idx = paper1_pages.index(current_page) if current_page in paper1_pages else 0
-    elif paper == "📐 Paper II":
+    elif paper == "Paper II":
         options = paper2_pages
         icons = ["calculator", "graph-up", "laptop", "file-earmark-text"]
         default_idx = paper2_pages.index(current_page) if current_page in paper2_pages else 0
-    elif paper == "📚 Paper III":
+    elif paper == "Paper III":
         options = paper3_pages
         icons = ["book", "bar-chart", "tools", "clipboard-check"]
         default_idx = paper3_pages.index(current_page) if current_page in paper3_pages else 0
-    elif paper == "🛠️ Resources":
+    elif paper == "Resources":
         options = resources_pages
         icons = ["wrench", "journal-bookmark", "folder", "pencil-square", "download"]
         default_idx = resources_pages.index(current_page) if current_page in resources_pages else 0
