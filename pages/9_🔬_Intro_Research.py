@@ -50,12 +50,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "📖 Meaning & Types",
     "🔍 Research Procedures",
     "📚 Literature Survey",
     "🎯 Hypothesis",
-    "📋 Classification"
+    "📋 Classification",
+    "🧠 Quiz"
 ])
 
 # =============================================================================
@@ -556,6 +557,64 @@ with tab5:
             control -> exp; control -> quasi;
         }
         """)
+
+
+# =============================================================================
+# TAB 6: QUIZ
+# =============================================================================
+with tab6:
+    st.markdown("## 🧠 Knowledge Check")
+    
+    with st.form("quiz_form"):
+        st.markdown("Test your understanding of Research Methodology basics.")
+        
+        q1 = st.radio(
+            "1. Which type of research is primarily concerned with finding a solution for a specific practical problem?",
+            ["Fundamental Research", "Applied Research", "Conceptual Research", "Descriptive Research"],
+            index=None
+        )
+        
+        q2 = st.radio(
+            "2. Which variable is manipulated by the researcher in an experimental design?",
+            ["Dependent Variable (DV)", "Independent Variable (IV)", "Extraneous Variable", "Confounding Variable"],
+            index=None
+        )
+        
+        q3 = st.radio(
+            "3. Rejecting a Null Hypothesis when it is actually true is known as:",
+            ["Type II Error", "Sampling Error", "Type I Error", "Standard Error"],
+            index=None
+        )
+        
+        submitted = st.form_submit_button("Submit Answers")
+        
+        if submitted:
+            score = 0
+            
+            # Q1 Check
+            if q1 == "Applied Research":
+                score += 1
+                st.success("✅ 1. Correct! Applied research solves practical problems.")
+            else:
+                st.error("❌ 1. Incorrect. The correct answer is Applied Research.")
+                
+            # Q2 Check
+            if q2 == "Independent Variable (IV)":
+                score += 1
+                st.success("✅ 2. Correct! The IV is manipulated to observe its effect on the DV.")
+            else:
+                st.error("❌ 2. Incorrect. The correct answer is Independent Variable (IV).")
+                
+            # Q3 Check
+            if q3 == "Type I Error":
+                score += 1
+                st.success("✅ 3. Correct! Type I error (False Positive) is rejecting a true Null Hypothesis.")
+            else:
+                st.error("❌ 3. Incorrect. The correct answer is Type I Error.")
+            
+            st.metric("Your Score", f"{score}/3")
+            if score == 3:
+                st.balloons()
 
 # Footer
 show_footer()

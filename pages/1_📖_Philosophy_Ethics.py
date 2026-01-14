@@ -67,12 +67,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tabs for different sections
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "🏛️ Philosophy", 
     "⚖️ Ethics", 
     "🔬 Research Integrity", 
     "⚠️ Misconduct", 
-    "📝 Publication Ethics"
+    "📝 Publication Ethics",
+    "🧠 Quiz"
 ])
 
 # =============================================================================
@@ -690,6 +691,64 @@ with tab5:
         - Erosion of public trust
         - Potential harm if clinical research is compromised
         """)
+
+
+# =============================================================================
+# TAB 6: QUIZ
+# =============================================================================
+with tab6:
+    st.markdown("## 🧠 Knowledge Check")
+    
+    with st.form("ethics_quiz"):
+        st.markdown("Test your understanding of Research Ethics.")
+        
+        q1 = st.radio(
+            "1. Making up data and interpreting it is known as:",
+            ["Plagiarism", "Fabrication", "Falsification", "Slicing"],
+            index=None
+        )
+        
+        q2 = st.radio(
+            "2. Which of the following is NOT required for authorship according to ICMJE?",
+            ["Substantial contribution", "Drafting/revising", "Securing funding", "Final approval"],
+            index=None
+        )
+        
+        q3 = st.radio(
+            "3. Publishing the same paper in two different journals is called:",
+            ["Duplicate Publication", "Salami Slicing", "Open Access", "Preprinting"],
+            index=None
+        )
+        
+        submitted = st.form_submit_button("Submit Answers")
+        
+        if submitted:
+            score = 0
+            
+            # Q1
+            if q1 == "Fabrication":
+                score += 1
+                st.success("✅ 1. Correct! Fabrication is creating data that never existed.")
+            else:
+                st.error("❌ 1. Incorrect. The correct answer is Fabrication.")
+                
+            # Q2
+            if q2 == "Securing funding":
+                score += 1
+                st.success("✅ 2. Correct! Funding acquisition alone does not qualify for authorship.")
+            else:
+                st.error("❌ 2. Incorrect. Securing funding is NOT an authorship criterion.")
+                
+            # Q3
+            if q3 == "Duplicate Publication":
+                score += 1
+                st.success("✅ 3. Correct! This is an unethical practice.")
+            else:
+                st.error("❌ 3. Incorrect. It is Duplicate Publication.")
+            
+            st.metric("Your Score", f"{score}/3")
+            if score == 3:
+                st.balloons()
 
 # Footer
 show_footer()

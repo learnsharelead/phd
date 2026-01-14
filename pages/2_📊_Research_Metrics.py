@@ -70,12 +70,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "📈 Introduction",
     "📰 Journal Metrics",
     "👤 Author Metrics",
     "🗄️ Major Databases",
-    "🔓 Open Access"
+    "🔓 Open Access",
+    "🧮 Calculators"
 ])
 
 # =============================================================================
@@ -714,6 +715,79 @@ with tab5:
         | Find OA version | Unpaywall, BASE, CORE |
         | Author metrics | Google Scholar, Scopus |
         """)
+
+
+# =============================================================================
+# TAB 6: CALCULATORS
+# =============================================================================
+with tab6:
+    st.markdown("## 🧮 Metric Calculators")
+    st.markdown("Simulate and calculate common research metrics.")
+
+    c1, c2 = st.tabs(["👤 h-index Calculator", "📰 Impact Factor Simulator"])
+
+    # --- h-index Calculator ---
+    with c1:
+        st.info("Enter the number of citations for each of your papers (comma separated).")
+        
+        cit_input = st.text_area("Citations per paper (e.g., 50, 45, 12, 11, 10, 5, 2)", value="10, 8, 5, 4, 3")
+        
+        if st.button("Calculate h-index"):
+            try:
+                # Parse input
+                citations = [int(x.strip()) for x in cit_input.split(",") if x.strip().isdigit()]
+                citations.sort(reverse=True)
+                
+                h_index = 0
+                for i, citations_count in enumerate(citations):
+                    if citations_count >= i + 1:
+                        h_index = i + 1
+                    else:
+                        break
+                
+                # g-index calculation
+                g_index = 0
+                citations_sum = 0
+                for i, c in enumerate(citations):
+                    citations_sum += c
+                    if citations_sum >= (i + 1)**2:
+                        g_index = i + 1
+
+                st.success(f"### Your h-index is: {h_index}")
+                st.info(f"Your g-index is: {g_index}")
+                
+                # Visualization
+                st.write("**Visual Representation:**")
+                chart_data = {"Paper Rank": list(range(1, len(citations)+1)), 
+                              "Citations": citations,
+                              "h-line": [h_index] * len(citations)}
+                st.line_chart(chart_data, x="Paper Rank", y=["Citations", "h-line"])
+                
+            except Exception as e:
+                st.error("Invalid input. Please enter numbers separated by commas.")
+
+    # --- Impact Factor Simulator ---
+    with c2:
+        st.info("Simulate how Journal Impact Factor is calculated.")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            y1_cites = st.number_input("Citations in 2024 to items published in 2023", value=150)
+            y2_cites = st.number_input("Citations in 2024 to items published in 2022", value=200)
+        with col2:
+            y1_pubs = st.number_input("Citable items published in 2023", value=50)
+            y2_pubs = st.number_input("Citable items published in 2022", value=45)
+            
+        if st.button("Calculate Impact Factor"):
+            numerator = y1_cites + y2_cites
+            denominator = y1_pubs + y2_pubs
+            
+            if denominator > 0:
+                if_score = numerator / denominator
+                st.metric("2024 Impact Factor", f"{if_score:.3f}")
+                st.latex(f"IF = \\frac{{{numerator}}}{{{denominator}}} = {if_score:.3f}")
+            else:
+                st.error("Denominator cannot be zero (must have published items).")
 
 # Footer
 show_footer()

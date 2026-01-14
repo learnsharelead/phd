@@ -2,6 +2,7 @@ import streamlit as st
 from utils.styles import apply_custom_css, show_footer
 from utils.seo import inject_seo_meta
 from utils.nav import show_top_nav
+import random
 
 # Expert SEO Setup
 inject_seo_meta(
@@ -100,17 +101,49 @@ with stats_col4:
     """, unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
+ 
+# Daily Research Tip
+tips = [
+    "Always backup your raw data in at least 3 locations (3-2-1 rule).",
+    "Write your abstract last. It should be a summary of what you did, not a plan.",
+    "Use reference management software (Zotero, Mendeley) from Day 1.",
+    "Reviewers are critical but their goal is usually to improve your paper.",
+    "A null result is still a result. Don't hide it!",
+    "Read the journal's 'Guide for Authors' BEFORE formatting your paper.",
+    "Correlation does not imply causation. Always check for confounding variables.",
+    "Keep a research journal. Document your thought process, not just results.",
+    "The h-index is just one metric. It doesn't define your worth as a researcher."
+]
+todays_tip = random.choice(tips)
+
+st.markdown(f"""
+<div style="background: linear-gradient(to right, #fffbeb, #fff); padding: 15px; border-radius: 10px; border-left: 5px solid #fbbf24; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+    <div style="font-size: 24px;">💡</div>
+    <div>
+        <div style="font-weight: 700; color: #b45309; font-size: 14px;">Daily Research Tip</div>
+        <div style="font-size: 14px; color: #78350f; font-style: italic;">"{todays_tip}"</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 
 # ============================================================================
 # PAPER I - RESEARCH METHODOLOGY
 # ============================================================================
 st.markdown("""
 <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 18px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #86efac;">
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <div style="font-size: 32px;">📝</div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="font-size: 32px;">📝</div>
+            <div>
+                <h3 style="margin: 0 !important; color: #166534; font-size: 1.2rem;">Paper I: Research Methodology</h3>
+                <p style="margin: 0 !important; font-size: 12px; color: #166534;">Foundation of research concepts, design, data collection, and scholarly reporting</p>
+            </div>
+        </div>
         <div>
-            <h3 style="margin: 0 !important; color: #166534; font-size: 1.2rem;">Paper I: Research Methodology</h3>
-            <p style="margin: 0 !important; font-size: 12px; color: #166534;">Foundation of research concepts, design, data collection, and scholarly reporting</p>
+             <a href="/Phd_Toolkit" target="_self" style="text-decoration: none;">
+                <button style="border: 1px solid #166534; background: white; color: #166534; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 12px; font-weight: 600;">🛠️ Open Toolkit</button>
+             </a>
         </div>
     </div>
 </div>

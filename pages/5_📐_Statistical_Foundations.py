@@ -54,11 +54,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "🎯 Hypothesis Design",
     "📊 Parametric Tests",
     "📈 Non-Parametric Tests",
     "🔢 Chi-Square",
+    "🧮 Calculators",
     "📋 Quick Reference"
 ])
 
@@ -603,10 +604,113 @@ with tab4:
         
         st.latex(r"\phi = \sqrt{\frac{\chi^2}{n}} \quad \text{(for 2×2 tables)}")
 
+
 # =============================================================================
-# TAB 5: QUICK REFERENCE
+# TAB 5: CALCULATORS
 # =============================================================================
 with tab5:
+    st.markdown("## 🧮 Statistical Calculators")
+    st.markdown("Use these tools to perform quick calculations for your research.")
+
+    calc_tab1, calc_tab2, calc_tab3 = st.tabs(["Sample Size", "t-Test (One Sample)", "Effect Size"])
+
+    # --- Sample Size Calculator ---
+    with calc_tab1:
+        st.markdown("### 📏 Sample Size Calculator (Cochran's Formula)")
+        st.info("Calculate the minimum sample size required to estimate a population proportion with a specific margin of error and confidence level.")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            conf_level = st.selectbox("Confidence Level", [0.90, 0.95, 0.99], index=1, format_func=lambda x: f"{int(x*100)}%")
+            margin_error = st.number_input("Margin of Error (e.g., 0.05 for 5%)", min_value=0.01, max_value=0.20, value=0.05, step=0.01)
+        with col2:
+            p_prop = st.number_input("Est. Population Proportion (p) - keep 0.5 if unknown", min_value=0.1, max_value=0.9, value=0.5, step=0.1)
+            pop_size = st.number_input("Population Size (leave 0 if infinite)", min_value=0, value=0)
+
+        if st.button("Calculate Sample Size"):
+            # Z-values
+            z_map = {0.90: 1.645, 0.95: 1.96, 0.99: 2.576}
+            z = z_map[conf_level]
+            
+            # Cochran's Formula: n0 = (Z^2 * p * (1-p)) / e^2
+            n0 = (z**2 * p_prop * (1 - p_prop)) / (margin_error**2)
+            
+            # Finite Population Correction
+            if pop_size > 0:
+                n = n0 / (1 + ((n0 - 1) / pop_size))
+            else:
+                n = n0
+            
+            st.success(f"### Recommended Sample Size: {int(n) + 1}")
+            st.markdown(f"**Formula Used:** n = (Z² · p(1-p)) / e²")
+            if pop_size > 0:
+                st.markdown("*Adjusted for finite population.*")
+
+    # --- T-Test Calculator ---
+    with calc_tab2:
+        st.markdown("### 📐 One-Sample t-Test Calculator")
+        st.info("Compare a sample mean to a hypothesized population mean.")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            sample_mean = st.number_input("Sample Mean (x̄)", value=0.0)
+            pop_mean = st.number_input("Hypothesized Mean (μ₀)", value=0.0)
+        with col2:
+            sample_std = st.number_input("Sample Std Dev (s)", min_value=0.0001, value=1.0)
+            n_size = st.number_input("Sample Size (n)", min_value=2, value=30)
+            
+        if st.button("Calculate t-Statistic"):
+            import math
+            se = sample_std / math.sqrt(n_size)
+            t_stat = (sample_mean - pop_mean) / se
+            df = n_size - 1
+            
+            st.markdown("---")
+            st.metric("t-Statistic", f"{t_stat:.4f}")
+            st.metric("Degrees of Freedom", df)
+            
+            st.markdown(f"""
+            **Interpretation:**
+            - If |t| > 2.045 (approx for df=29, α=0.05), result is significant.
+            - Check t-table for exact p-value using df={df}.
+            """)
+
+    # --- Effect Size Calculator ---
+    with calc_tab3:
+        st.markdown("### 📊 Cohen's d Calculator")
+        st.info("Calculate the effect size between two independent groups.")
+        
+        c1, c2 = st.columns(2)
+        with c1:
+            m1 = st.number_input("Mean Group 1", value=10.0)
+            s1 = st.number_input("Std Dev Group 1", value=2.0)
+            n1 = st.number_input("n Group 1", min_value=2, value=30)
+        with c2:
+            m2 = st.number_input("Mean Group 2", value=12.0)
+            s2 = st.number_input("Std Dev Group 2", value=2.0)
+            n2 = st.number_input("n Group 2", min_value=2, value=30)
+            
+        if st.button("Calculate Cohen's d"):
+            import math
+            # Pooled SD
+            sp = math.sqrt(((n1-1)*s1**2 + (n2-1)*s2**2) / (n1+n2-2))
+            d = (m1 - m2) / sp
+            
+            st.success(f"### Cohen's d: {d:.3f}")
+            
+            interp = ""
+            abs_d = abs(d)
+            if abs_d < 0.2: interp = "Negligible"
+            elif abs_d < 0.5: interp = "Small"
+            elif abs_d < 0.8: interp = "Medium"
+            else: interp = "Large"
+            
+            st.info(f"**Interpretation:** {interp} effect size")
+
+# =============================================================================
+# TAB 6: QUICK REFERENCE
+# =============================================================================
+with tab6:
     st.markdown("## 📋 Quick Reference: Choosing the Right Test")
     
     with st.expander("🔍 Test Selection Flowchart", expanded=True):
