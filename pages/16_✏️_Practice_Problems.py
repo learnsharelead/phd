@@ -3,8 +3,6 @@ import random
 from utils.styles import apply_custom_css, show_footer
 from utils.nav import show_top_nav
 
-# Page Config
-st.set_page_config(page_title="Practice Problems | Ph.D. Hub", page_icon="✏️", layout="wide")
 apply_custom_css()
 show_top_nav(current_page="Practice Problems")
 

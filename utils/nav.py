@@ -31,12 +31,18 @@ def show_top_nav(current_page="Home"):
         "Research Metrics": "pages/2_📊_Research_Metrics.py",
         "Online Tools": "pages/3_🔧_Online_Tools.py",
         "Case Studies": "pages/4_📋_Case_Studies.py",
+        # Resources
+        "Toolkit": "pages/13_🛠️_Phd_Toolkit.py",
+        "Glossary": "pages/14_📚_Glossary.py",
+        "Sample Datasets": "pages/15_📁_Sample_Datasets.py",
+        "Practice Problems": "pages/16_✏️_Practice_Problems.py",
     }
     
     # Group pages by paper
     paper1_pages = ["Intro to Research", "Research Design", "Measurement & Sampling", "Report & Publication"]
     paper2_pages = ["Statistical Foundations", "Correlation & Regression", "Computer Applications", "Formula Cheat Sheet"]
     paper3_pages = ["Philosophy & Ethics", "Research Metrics", "Online Tools", "Case Studies"]
+    resources_pages = ["Toolkit", "Glossary", "Sample Datasets", "Practice Problems"]
     
     # Determine current paper
     if current_page in paper1_pages:
@@ -45,20 +51,23 @@ def show_top_nav(current_page="Home"):
         current_paper = "Paper II"
     elif current_page in paper3_pages:
         current_paper = "Paper III"
+    elif current_page in resources_pages:
+        current_paper = "Resources"
     else:
         current_paper = "Home"
     
     # Paper selector row
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 3, 1])
     
     with col2:
         paper = option_menu(
             menu_title=None,
-            options=["🏠 Home", "📝 Paper I", "📐 Paper II", "📚 Paper III"],
-            icons=["house", "journal-text", "calculator", "book"],
+            options=["🏠 Home", "📝 Paper I", "📐 Paper II", "📚 Paper III", "🛠️ Resources"],
+            icons=["house", "journal-text", "calculator", "book", "tools"],
             default_index=0 if current_paper == "Home" else 
                          1 if current_paper == "Paper I" else 
-                         2 if current_paper == "Paper II" else 3,
+                         2 if current_paper == "Paper II" else 
+                         3 if current_paper == "Paper III" else 4,
             orientation="horizontal",
             styles={
                 "container": {
@@ -76,7 +85,7 @@ def show_top_nav(current_page="Home"):
                     "margin": "0 3px", 
                     "--hover-color": "#f1f5f9", 
                     "color": "#64748b",
-                    "padding": "8px 15px",
+                    "padding": "8px 12px",
                     "border-radius": "8px",
                     "font-weight": "500"
                 },
@@ -107,6 +116,10 @@ def show_top_nav(current_page="Home"):
         options = paper3_pages
         icons = ["book", "bar-chart", "tools", "clipboard-check"]
         default_idx = paper3_pages.index(current_page) if current_page in paper3_pages else 0
+    elif paper == "🛠️ Resources":
+        options = resources_pages
+        icons = ["wrench", "journal-bookmark", "folder", "pencil-square"]
+        default_idx = resources_pages.index(current_page) if current_page in resources_pages else 0
     else:
         return  # Home selected, no module nav needed
 
@@ -148,3 +161,4 @@ def show_top_nav(current_page="Home"):
     if selected != current_page:
         target_file = page_map[selected]
         st.switch_page(target_file)
+

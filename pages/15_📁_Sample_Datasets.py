@@ -3,8 +3,6 @@ import pandas as pd
 from utils.styles import apply_custom_css, show_footer
 from utils.nav import show_top_nav
 
-# Page Config
-st.set_page_config(page_title="Sample Datasets | Ph.D. Hub", page_icon="📁", layout="wide")
 apply_custom_css()
 show_top_nav(current_page="Sample Datasets")
 
