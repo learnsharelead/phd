@@ -1,17 +1,26 @@
 import streamlit as st
-import io
 from fpdf import FPDF
 from utils.styles import apply_custom_css, show_footer
 from utils.nav import show_top_nav
+from utils.pdf_content import PAPER_CONTENT
+import base64
 
+# Page Config (must be first)
+st.set_page_config(page_title="Downloads | Research Ethics Hub", page_icon="📥", layout="wide")
+
+# Styling
 apply_custom_css()
 show_top_nav(current_page="Downloads")
 
+# Check if user is logged in (optional, but good practice)
+if 'user_name' not in st.session_state:
+    st.session_state.user_name = "Researcher"
+
 # Header
 st.markdown("""
-<div style="text-align: center; padding: 12px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 10px; margin-bottom: 20px;">
-    <h2 style="margin: 0 !important; font-size: 1.4rem !important;">📥 Download Complete Coursework (PDF)</h2>
-    <p style="margin: 5px 0 0 0 !important; font-size: 14px; color: #92400e;">Detailed, exam-ready study notes for every papers.</p>
+<div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border-radius: 10px; margin-bottom: 25px;">
+    <h1 style="color: #0369a1; margin-bottom: 10px; font-size: 2.5rem;">📥 Study Material Downloads</h1>
+    <p style="color: #0c4a6e; font-size: 1.1rem;">Download comprehensive study guides, cheat sheets, and summaries for your Ph.D. coursework.</p>
 </div>
 """, unsafe_allow_html=True)
 
