@@ -433,5 +433,687 @@ with tab4:
         - Ethical considerations
         """)
 
+# =============================================================================
+# COMPREHENSIVE QUESTIONNAIRE DESIGN ADDITIONS
+# =============================================================================
+
+# Add to Tab 2 (Questionnaire Design)
+with tab2:
+    with st.expander("📊 Response Scales - Complete Guide", expanded=True):
+        st.markdown("""
+        ### Likert Scales (Most Common)
+        
+        **5-Point Likert Scale:**
+        ```
+        Question: "I am satisfied with my job"
+        
+        1 = Strongly Disagree
+        2 = Disagree
+        3 = Neutral
+        4 = Agree
+        5 = Strongly Agree
+        ```
+        
+        **When to Use:**
+        - Measuring attitudes, opinions, perceptions
+        - Need quantitative data from subjective responses
+        - Want to measure intensity of feelings
+        
+        **Variations:**
+        - **7-Point**: More granularity (1-7)
+        - **4-Point**: Force choice (no neutral option)
+        - **Semantic Differential**: Opposite adjectives (e.g., Happy 1-2-3-4-5 Sad)
+        
+        ---
+        ### Rating Scales
+        
+        **Numerical Rating (0-10):**
+        ```
+        "On a scale of 0-10, how likely are you to recommend our product?"
+        
+        0 = Not at all likely
+        10 = Extremely likely
+        ```
+        
+        **Frequency Scale:**
+        ```
+        "How often do you exercise?"
+        
+        □ Never
+        □ Rarely (less than once a month)
+        □ Sometimes (1-3 times a month)
+        □ Often (1-2 times a week)
+        □ Very Often (3+ times a week)
+        □ Always (daily)
+        ```
+        
+        ---
+        ### Multiple Choice
+        
+        **Single Answer:**
+        ```
+        "What is your highest level of education?"
+        
+        ○ High School
+        ○ Bachelor's Degree
+        ○ Master's Degree
+        ○ Doctoral Degree
+        ○ Other: __________
+        ```
+        
+        **Multiple Answers:**
+        ```
+        "Which social media platforms do you use? (Check all that apply)"
+        
+        ☐ Facebook
+        ☐ Instagram
+        ☐ Twitter
+        ☐ LinkedIn
+        ☐ TikTok
+        ☐ Other: __________
+        ```
+        
+        ---
+        ### Ranking Questions
+        
+        ```
+        "Rank the following factors in order of importance when choosing a job
+        (1 = Most important, 5 = Least important)"
+        
+        ___ Salary
+        ___ Work-life balance
+        ___ Career growth
+        ___ Company culture
+        ___ Location
+        ```
+        
+        **Tip:** Limit to 5-7 items maximum (cognitive overload beyond that)
+        
+        ---
+        ### Dichotomous (Yes/No)
+        
+        ```
+        "Have you purchased from us before?"
+        
+        ○ Yes
+        ○ No
+        ```
+        
+        **When to Use:**
+        - Screening questions
+        - Simple factual information
+        - Skip logic triggers
+        
+        ---
+        ### Matrix/Grid Questions
+        
+        ```
+        "Please rate your satisfaction with the following aspects:"
+        
+                            Very      Somewhat   Neutral   Somewhat    Very
+                          Satisfied  Satisfied           Dissatisfied Dissatisfied
+        Product Quality      ○          ○         ○          ○           ○
+        Customer Service     ○          ○         ○          ○           ○
+        Delivery Speed       ○          ○         ○          ○           ○
+        Value for Money      ○          ○         ○          ○           ○
+        ```
+        
+        **Pros:** Efficient, easy to complete  
+        **Cons:** Can lead to straight-lining (same answer for all)
+        """)
+    
+    with st.expander("✅ Complete Questionnaire Example", expanded=True):
+        st.markdown("""
+        ### Employee Satisfaction Survey (Sample)
+        
+        ---
+        **SECTION 1: INTRODUCTION**
+        
+        **Title:** Employee Satisfaction Survey 2024
+        
+        **Purpose:** This survey aims to understand your experience working at [Company Name]. 
+        Your honest feedback will help us improve our workplace.
+        
+        **Confidentiality:** All responses are anonymous and confidential.
+        
+        **Time:** Approximately 10 minutes
+        
+        **Instructions:** Please answer all questions honestly. There are no right or wrong answers.
+        
+        ---
+        **SECTION 2: SCREENING**
+        
+        1. Are you currently employed at [Company Name]?
+           - ○ Yes → Continue
+           - ○ No → End survey
+        
+        2. How long have you worked here?
+           - ○ Less than 6 months
+           - ○ 6 months - 1 year
+           - ○ 1-3 years
+           - ○ 3-5 years
+           - ○ More than 5 years
+        
+        ---
+        **SECTION 3: JOB SATISFACTION (Likert Scale)**
+        
+        *Please indicate your level of agreement with each statement:*
+        
+        (1 = Strongly Disagree, 5 = Strongly Agree)
+        
+        3. I am satisfied with my current role.
+           1 - 2 - 3 - 4 - 5
+        
+        4. I have the resources I need to do my job effectively.
+           1 - 2 - 3 - 4 - 5
+        
+        5. My workload is manageable.
+           1 - 2 - 3 - 4 - 5
+        
+        6. I receive adequate support from my manager.
+           1 - 2 - 3 - 4 - 5
+        
+        7. I feel valued by the organization.
+           1 - 2 - 3 - 4 - 5
+        
+        ---
+        **SECTION 4: WORK ENVIRONMENT**
+        
+        8. How would you rate the following aspects of your work environment?
+        
+        |                    | Excellent | Good | Fair | Poor | Very Poor |
+        |--------------------|-----------|------|------|------|-----------|
+        | Office facilities  |     ○     |  ○   |  ○   |  ○   |     ○     |
+        | Technology/tools   |     ○     |  ○   |  ○   |  ○   |     ○     |
+        | Team collaboration |     ○     |  ○   |  ○   |  ○   |     ○     |
+        | Communication      |     ○     |  ○   |  ○   |  ○   |     ○     |
+        
+        ---
+        **SECTION 5: OPEN-ENDED**
+        
+        9. What do you like most about working here?
+           _____________________________________________________________
+           _____________________________________________________________
+        
+        10. What one thing would you change to improve your experience?
+            _____________________________________________________________
+            _____________________________________________________________
+        
+        ---
+        **SECTION 6: DEMOGRAPHICS**
+        
+        11. Department:
+            - ○ Sales
+            - ○ Marketing
+            - ○ IT
+            - ○ HR
+            - ○ Operations
+            - ○ Other: __________
+        
+        12. Age group:
+            - ○ 18-25
+            - ○ 26-35
+            - ○ 36-45
+            - ○ 46-55
+            - ○ 56+
+        
+        13. Gender:
+            - ○ Male
+            - ○ Female
+            - ○ Non-binary
+            - ○ Prefer not to say
+        
+        ---
+        **SECTION 7: CLOSING**
+        
+        Thank you for completing this survey! Your feedback is valuable and will be used 
+        to improve our workplace.
+        
+        If you have any questions, please contact: hr@company.com
+        
+        ---
+        ### Analysis Plan for This Survey
+        
+        **Quantitative Analysis:**
+        - Calculate mean satisfaction scores (Questions 3-7)
+        - Compare scores across departments (ANOVA)
+        - Correlation between tenure and satisfaction
+        - Cross-tabulation of ratings by demographics
+        
+        **Qualitative Analysis:**
+        - Code open-ended responses (Questions 9-10)
+        - Identify common themes
+        - Extract representative quotes
+        
+        **Reporting:**
+        - Overall satisfaction score: Average of Q3-7
+        - Department comparison charts
+        - Word cloud from open responses
+        - Recommendations based on findings
+        """)
+    
+    with st.expander("🎯 Pilot Testing Your Questionnaire", expanded=True):
+        st.markdown("""
+        ### Why Pilot Test?
+        
+        **Purpose:**
+        - Identify confusing questions
+        - Check question flow and logic
+        - Estimate completion time
+        - Test skip logic and branching
+        - Detect technical issues (online surveys)
+        
+        ---
+        ### How to Conduct a Pilot Test
+        
+        **Step 1: Select Pilot Sample**
+        - Size: 10-30 people (similar to target population)
+        - Not part of final sample
+        - Representative of target audience
+        
+        **Step 2: Administer Survey**
+        - Same conditions as final survey
+        - Time how long it takes
+        - Observe any difficulties
+        
+        **Step 3: Debrief**
+        Ask pilot participants:
+        - Were any questions confusing?
+        - Were any questions offensive or sensitive?
+        - Was anything missing?
+        - How long did it take?
+        - Any technical issues?
+        
+        **Step 4: Analyze Results**
+        - Check for missing data patterns
+        - Look for questions everyone skipped
+        - Identify questions with no variance (everyone same answer)
+        - Review open-ended responses for clarity
+        
+        **Step 5: Revise**
+        - Reword confusing questions
+        - Remove redundant questions
+        - Add missing response options
+        - Fix technical issues
+        - Adjust length if too long
+        
+        **Step 6: Re-test (if major changes)**
+        - If significant revisions, pilot again
+        - Small tweaks don't need re-testing
+        
+        ---
+        ### Pilot Test Checklist
+        
+        ✅ Questions are clear and unambiguous  
+        ✅ Response options are exhaustive and mutually exclusive  
+        ✅ No leading or biased questions  
+        ✅ Logical flow and order  
+        ✅ Skip logic works correctly  
+        ✅ Completion time is reasonable (< 15 minutes ideal)  
+        ✅ No technical glitches  
+        ✅ Instructions are clear  
+        ✅ All questions are necessary  
+        ✅ Sensitive questions handled appropriately  
+        """)
+
+# Add to Tab 4 (Data Collection)
+with tab4:
+    with st.expander("📊 Primary vs Secondary Data", expanded=True):
+        st.markdown("""
+        ### Primary Data
+        
+        **Definition:** Data collected firsthand by the researcher for the specific study
+        
+        **Methods:**
+        - Surveys/Questionnaires
+        - Interviews (structured, semi-structured, unstructured)
+        - Observations (participant, non-participant)
+        - Experiments
+        - Focus groups
+        
+        **Advantages:**
+        - ✅ Specific to your research question
+        - ✅ Current and up-to-date
+        - ✅ Control over quality
+        - ✅ Know the methodology
+        
+        **Disadvantages:**
+        - ❌ Time-consuming
+        - ❌ Expensive
+        - ❌ Requires expertise
+        - ❌ May have small sample
+        
+        **Example:**
+        Conducting a survey of 500 employees to measure job satisfaction at your company.
+        
+        ---
+        ### Secondary Data
+        
+        **Definition:** Data collected by someone else for a different purpose
+        
+        **Sources:**
+        - Published research papers
+        - Government databases (Census, Labor Statistics)
+        - Company reports
+        - Historical records
+        - Existing datasets
+        
+        **Advantages:**
+        - ✅ Quick and inexpensive
+        - ✅ Large sample sizes
+        - ✅ Historical data available
+        - ✅ Professional collection
+        
+        **Disadvantages:**
+        - ❌ May not fit your exact needs
+        - ❌ Could be outdated
+        - ❌ Unknown quality/bias
+        - ❌ Limited control
+        
+        **Example:**
+        Using national employment statistics from government databases to compare with your findings.
+        
+        ---
+        ### Comparison Table
+        
+        | Aspect | Primary Data | Secondary Data |
+        |--------|--------------|----------------|
+        | **Cost** | High | Low |
+        | **Time** | Months | Days/Weeks |
+        | **Specificity** | Exact fit | May not fit perfectly |
+        | **Control** | Full control | No control |
+        | **Sample Size** | Usually smaller | Often larger |
+        | **Currency** | Current | May be outdated |
+        | **Reliability** | You ensure it | Must verify |
+        
+        ---
+        ### When to Use Each
+        
+        **Use Primary Data When:**
+        - No existing data on your topic
+        - Need very specific information
+        - Studying current/emerging phenomena
+        - Need to control methodology
+        
+        **Use Secondary Data When:**
+        - Exploratory research
+        - Limited budget/time
+        - Need large sample or historical data
+        - Validating primary findings
+        
+        **Best Practice:** Use both!
+        - Secondary data for context and comparison
+        - Primary data for specific research questions
+        """)
+    
+    with st.expander("📋 Survey Methods Comparison", expanded=True):
+        st.markdown("""
+        ### 1. Online Surveys
+        
+        **Tools:** Google Forms, SurveyMonkey, Qualtrics, Typeform
+        
+        **Advantages:**
+        - ✅ Low cost
+        - ✅ Fast distribution
+        - ✅ Easy data collection
+        - ✅ Skip logic possible
+        - ✅ Wide geographic reach
+        - ✅ Automatic data entry
+        
+        **Disadvantages:**
+        - ❌ Requires internet access
+        - ❌ Lower response rates (10-30%)
+        - ❌ Sample bias (tech-savvy only)
+        - ❌ No clarification possible
+        
+        **Best For:** Large samples, tech-savvy populations, budget constraints
+        
+        **Tips:**
+        - Keep it short (< 10 minutes)
+        - Mobile-friendly design
+        - Send reminders
+        - Offer incentives
+        
+        ---
+        ### 2. Mail Surveys
+        
+        **Advantages:**
+        - ✅ Reaches all demographics
+        - ✅ Respondent can take time
+        - ✅ No interviewer bias
+        - ✅ Good for sensitive topics
+        
+        **Disadvantages:**
+        - ❌ Expensive (printing, postage)
+        - ❌ Slow (weeks to months)
+        - ❌ Low response rate (5-20%)
+        - ❌ No control over who responds
+        
+        **Best For:** Older populations, rural areas, official surveys
+        
+        **Tips:**
+        - Include prepaid return envelope
+        - Professional appearance
+        - Clear instructions
+        - Follow-up mailings
+        
+        ---
+        ### 3. Telephone Surveys
+        
+        **Advantages:**
+        - ✅ Higher response rate (30-50%)
+        - ✅ Can clarify questions
+        - ✅ Faster than mail
+        - ✅ Can reach non-internet users
+        
+        **Disadvantages:**
+        - ❌ Expensive (interviewer costs)
+        - ❌ Time-consuming
+        - ❌ Interviewer bias possible
+        - ❌ Declining landline use
+        - ❌ Spam call concerns
+        
+        **Best For:** Older adults, complex questions, need for clarification
+        
+        **Tips:**
+        - Train interviewers thoroughly
+        - Call at convenient times
+        - Keep it brief (< 15 minutes)
+        - Record calls (with permission)
+        
+        ---
+        ### 4. Face-to-Face Interviews
+        
+        **Advantages:**
+        - ✅ Highest response rate (70-90%)
+        - ✅ Can observe non-verbal cues
+        - ✅ Can clarify and probe
+        - ✅ Can use visual aids
+        - ✅ Build rapport
+        
+        **Disadvantages:**
+        - ❌ Very expensive
+        - ❌ Time-intensive
+        - ❌ Geographic limitations
+        - ❌ Interviewer bias
+        - ❌ Social desirability bias
+        
+        **Best For:** Complex topics, qualitative depth, illiterate populations
+        
+        **Tips:**
+        - Choose neutral location
+        - Dress appropriately
+        - Build rapport first
+        - Record (with permission)
+        
+        ---
+        ### 5. Mixed-Mode Surveys
+        
+        **Approach:** Combine multiple methods
+        
+        **Example:**
+        - Initial online survey
+        - Follow-up phone calls for non-responders
+        - Face-to-face for specific subgroups
+        
+        **Advantages:**
+        - ✅ Higher overall response rate
+        - ✅ Reaches diverse populations
+        - ✅ Reduces bias
+        
+        **Disadvantages:**
+        - ❌ More complex
+        - ❌ Higher cost
+        - ❌ Mode effects (different methods → different answers)
+        
+        ---
+        ### Comparison Table
+        
+        | Method | Cost | Speed | Response Rate | Sample Bias |
+        |--------|------|-------|---------------|-------------|
+        | **Online** | Low | Fast | 10-30% | Tech-savvy |
+        | **Mail** | High | Slow | 5-20% | Literate |
+        | **Phone** | Medium | Medium | 30-50% | Landline owners |
+        | **Face-to-Face** | Very High | Slow | 70-90% | Accessible |
+        | **Mixed-Mode** | High | Medium | 40-60% | Reduced |
+        
+        ---
+        ### Choosing the Right Method
+        
+        **Consider:**
+        1. **Budget:** How much can you spend?
+        2. **Timeline:** How quickly do you need data?
+        3. **Population:** Who are your respondents?
+        4. **Topic:** How sensitive/complex?
+        5. **Sample Size:** How many responses needed?
+        6. **Geographic Spread:** Local or national?
+        7. **Response Rate:** How critical is high response?
+        """)
+    
+    with st.expander("🎯 Maximizing Response Rates", expanded=True):
+        st.markdown("""
+        ### Before Distribution
+        
+        **1. Design a Good Questionnaire**
+        - Short and focused (< 10 minutes)
+        - Clear and simple language
+        - Professional appearance
+        - Mobile-friendly (for online)
+        
+        **2. Choose the Right Method**
+        - Match method to population
+        - Consider accessibility
+        
+        **3. Timing**
+        - Avoid holidays and busy periods
+        - Send on Tuesday-Thursday (best response)
+        - Mid-morning or early afternoon
+        
+        ---
+        ### During Distribution
+        
+        **4. Personalization**
+        - Use respondent's name
+        - Explain why they were chosen
+        - Show relevance to them
+        
+        **5. Clear Communication**
+        - Explain purpose clearly
+        - Emphasize confidentiality
+        - State time required
+        - Explain how data will be used
+        
+        **6. Incentives**
+        - Monetary ($5-$20 gift cards)
+        - Prize draws
+        - Donation to charity
+        - Results summary
+        - Early access to findings
+        
+        **Tip:** Prepaid incentives work better than promised rewards
+        
+        ---
+        ### After Distribution
+        
+        **7. Follow-Up Reminders**
+        - **1st reminder:** 3-5 days after initial
+        - **2nd reminder:** 7-10 days after initial
+        - **Final reminder:** 14 days after initial
+        
+        **Reminder Template:**
+        ```
+        Subject: Reminder: Your Input Needed for [Study Name]
+        
+        Dear [Name],
+        
+        A few days ago, we sent you a survey about [topic]. If you've already 
+        completed it, thank you! If not, we'd greatly appreciate your input.
+        
+        Your response is important because [reason].
+        
+        The survey takes only [X] minutes: [Link]
+        
+        Thank you for your time!
+        ```
+        
+        **8. Monitor Response Rates**
+        - Track daily responses
+        - Identify low-response groups
+        - Adjust strategy if needed
+        
+        ---
+        ### Response Rate Benchmarks
+        
+        | Method | Typical Rate | Good Rate | Excellent Rate |
+        |--------|--------------|-----------|----------------|
+        | Online (general) | 10-15% | 20-30% | 40%+ |
+        | Online (targeted) | 20-30% | 40-50% | 60%+ |
+        | Mail | 5-15% | 20-30% | 40%+ |
+        | Phone | 20-40% | 50-60% | 70%+ |
+        | Face-to-Face | 60-80% | 80-90% | 95%+ |
+        | Employee surveys | 30-40% | 50-70% | 80%+ |
+        
+        ---
+        ### What Affects Response Rates?
+        
+        **Increases Response:**
+        - ✅ Short survey (< 10 min)
+        - ✅ Relevant topic
+        - ✅ Personalized invitation
+        - ✅ Incentives
+        - ✅ Multiple reminders
+        - ✅ Professional design
+        - ✅ University/official sponsorship
+        - ✅ Clear purpose
+        
+        **Decreases Response:**
+        - ❌ Long survey (> 20 min)
+        - ❌ Boring topic
+        - ❌ Generic invitation
+        - ❌ No incentive
+        - ❌ No follow-up
+        - ❌ Poor design
+        - ❌ Unknown sender
+        - ❌ Unclear purpose
+        
+        ---
+        ### Dealing with Low Response Rates
+        
+        **If < 20% after 2 weeks:**
+        
+        1. **Extend deadline** (add 1-2 weeks)
+        2. **Increase incentive** (if possible)
+        3. **Change method** (add phone follow-up)
+        4. **Shorten survey** (remove non-essential questions)
+        5. **Personal outreach** (call key respondents)
+        
+        **If still low:**
+        - Document response rate
+        - Analyze non-response bias
+        - Weight responses if needed
+        - Acknowledge limitation in report
+        """)
+
 # Footer
 show_footer()
+
