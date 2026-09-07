@@ -37,13 +37,14 @@ def show_top_nav(current_page="Home"):
         "Sample Datasets": "pages/15_📁_Sample_Datasets.py",
         "Practice Problems": "pages/16_✏️_Practice_Problems.py",
         "Downloads": "pages/17_📥_Downloads.py",
+        "Life Sciences Domain Specific": "pages/18_Life_Sciences_Domain_Specific.py",
     }
     
     # Group pages by paper
     paper1_pages = ["Intro to Research", "Research Design", "Measurement & Sampling", "Report & Publication"]
     paper2_pages = ["Statistical Foundations", "Correlation & Regression", "Computer Applications", "Formula Cheat Sheet"]
     paper3_pages = ["Philosophy & Ethics", "Research Metrics", "Online Tools", "Case Studies"]
-    resources_pages = ["Toolkit", "Glossary", "Sample Datasets", "Practice Problems", "Downloads"]
+    resources_pages = ["Toolkit", "Glossary", "Sample Datasets", "Practice Problems", "Downloads", "Life Sciences Domain Specific"]
     
     # Determine current paper
     if current_page in paper1_pages:
@@ -119,7 +120,7 @@ def show_top_nav(current_page="Home"):
         default_idx = paper3_pages.index(current_page) if current_page in paper3_pages else 0
     elif paper == "Resources":
         options = resources_pages
-        icons = ["wrench", "journal-bookmark", "folder", "pencil-square", "download"]
+        icons = ["wrench", "journal-bookmark", "folder", "pencil-square", "download", "collection"]
         default_idx = resources_pages.index(current_page) if current_page in resources_pages else 0
     else:
         return  # Home selected, no module nav needed

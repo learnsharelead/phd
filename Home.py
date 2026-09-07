@@ -69,6 +69,20 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# Quick Link to the new domain-specific content
+quick_col1, quick_col2 = st.columns([3, 1])
+with quick_col1:
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); padding: 16px; border-radius: 12px; margin-bottom: 12px; border: 1px solid #67e8f9;">
+        <div style="font-size: 12px; font-weight: 700; color: #0f766e; margin-bottom: 4px;">NEW ON HOME</div>
+        <div style="font-size: 20px; font-weight: 800; color: #164e63; margin-bottom: 4px;">Life Sciences Domain Specific Masterclass</div>
+        <div style="font-size: 13px; color: #155e75;">Detailed notes, examples, question papers, and model answers for PHDLS101 to PHDLS106.</div>
+    </div>
+    """, unsafe_allow_html=True)
+with quick_col2:
+    if st.button("Open Masterclass", key="home_masterclass", use_container_width=True):
+        st.switch_page("pages/18_Life_Sciences_Domain_Specific.py")
+
 # Quick Stats
 stats_col1, stats_col2, stats_col3, stats_col4 = st.columns(4)
 with stats_col1:
@@ -298,6 +312,37 @@ with p3_col2:
     """, unsafe_allow_html=True)
     if st.button("View Case Studies", key="cases", use_container_width=True):
         st.switch_page("pages/4_📋_Case_Studies.py")
+
+st.markdown("---")
+
+# ============================================================================
+# DOMAIN SPECIFIC COURSES
+# ============================================================================
+st.markdown("""
+<div style="background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); padding: 18px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #67e8f9;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <div style="font-size: 32px;">🧬</div>
+        <div>
+            <h3 style="margin: 0 !important; color: #155e75; font-size: 1.2rem;">Domain Specific Courses</h3>
+            <p style="margin: 0 !important; font-size: 12px; color: #155e75;">New workspace content generated from the attached Life Sciences Ph.D. course book</p>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+ds_col1, ds_col2 = st.columns([2, 1])
+with ds_col1:
+    st.markdown("""
+    <div style="background: white; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0;">
+        <div style="font-weight: 600; font-size: 14px; color: #0f766e;">Included subjects</div>
+        <div style="font-size: 12px; color: #64748b; margin-top: 6px;">
+            Bioanalytical Techniques • Biomolecules • Bioinformatics • Environmental Microbiology • Advanced Enzymology • Applied Zoology and Toxicology
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+with ds_col2:
+    if st.button("Open Domain Courses", key="domain_courses", use_container_width=True):
+        st.switch_page("pages/18_Life_Sciences_Domain_Specific.py")
 
 st.markdown("---")
 
